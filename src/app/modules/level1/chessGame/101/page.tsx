@@ -200,7 +200,7 @@ const M1: React.FC = () => {
 
 
       <header className="fixed-header">
-      <h3>10 Chess Game</h3>
+      <h3>9 Chess Game</h3>
       </header>
       
       <div className="media-container">
