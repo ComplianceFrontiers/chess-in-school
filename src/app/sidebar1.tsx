@@ -86,12 +86,12 @@ const topics = [
     {
       title: "8. Notation",
       completed: true,
-      submodules: [{ title: "8.1 Notation", completed: true }]
+      submodules: [{ title: "8 Notation", completed: true }]
     },
     {
       title: "9. Chess Game",
       completed: true,
-      submodules: [{ title: "9.1 Chess Game", completed: true }]
+      submodules: [{ title: "9 Chess Game", completed: true }]
     }
 ];
 
@@ -193,8 +193,8 @@ const Sidebar1: React.FC = () => {
       "7.1 Opening": "/modules/level1/stagesOfTheGame/81",
       "7.2 Middlegame": "/modules/level1/stagesOfTheGame/82",
       "7.3 Endgame": "/modules/level1/stagesOfTheGame/83",
-      "8.1 Notation": "/modules/level1/notation/91",
-      "9.1 Chess Game": "/modules/level1/chessGame/101",
+      "8 Notation": "/modules/level1/notation/91",
+      "9 Chess Game": "/modules/level1/chessGame/101",
     
     };
 
@@ -271,8 +271,8 @@ const Sidebar1: React.FC = () => {
       "7.1 Opening": "/modules/level1/stagesOfTheGame/81",
       "7.2 Middlegame": "/modules/level1/stagesOfTheGame/82",
       "7.3 Endgame": "/modules/level1/stagesOfTheGame/83",
-      "8.1 Notation": "/modules/level1/notation/91",
-      "9.1 Chess Game": "/modules/level1/chessGame/101",
+      "8 Notation": "/modules/level1/notation/91",
+      "9 Chess Game": "/modules/level1/chessGame/101",
     
     };
     return currentPath === submodulePaths[submoduleTitle];
