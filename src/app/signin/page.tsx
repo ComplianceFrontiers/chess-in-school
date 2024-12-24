@@ -170,8 +170,9 @@ const SignIn = () => {
               {emailError && <p className="text-red-500 text-sm mt-2">{emailError}</p>}
             </div>
             {showOtpInput && (
-              setMessageText('')
+              
               <div className="signup-field mb-4">
+              setMessageText('');
                 <label className="block text-gray-700 mb-2">Enter OTP</label>
                 <input
                   type="text"
