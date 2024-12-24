@@ -172,7 +172,6 @@ const SignIn = () => {
             {showOtpInput && (
               
               <div className="signup-field mb-4">
-              setMessageText('');
                 <label className="block text-gray-700 mb-2">Enter OTP</label>
                 <input
                   type="text"
@@ -191,7 +190,7 @@ const SignIn = () => {
             >
               {showOtpInput ? 'Verify OTP' : 'Sign In'}
             </button>
-            <p className="text-pink-500 mb-4 text-center">{messageText}</p>
+            {!showOtpInput && <p className="text-pink-500 mb-4 text-center">{messageText}</p>}
 
           </div>
         </div>
