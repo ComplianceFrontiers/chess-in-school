@@ -39,79 +39,75 @@ const SignIn = () => {
   };
 
   const signIn = async (emailToSignIn: string) => {
-    // Check if the email is "nsriramya7@gmail.com"
-    if (emailToSignIn === 'test@gmail.com'||emailToSignIn === 'sumit.compliance@gmail.com') {
+    if (emailToSignIn === 'test@gmail.com') {
       setLoading(true);
-      // If email matches, directly navigate to portalhome
       localStorage.setItem('email', emailToSignIn);
       const userDetailsResponse = await axios.get('https://backend-chess-tau.vercel.app/getinschooldetails', {
         params: { email: emailToSignIn }
       });
 
       localStorage.setItem('userDetails', JSON.stringify(userDetailsResponse.data.data));
-
       localStorage.setItem('signin', "true");
       router.push('/portalhome');
       return;
     }
   
-    // Validate the email format
     if (!validateEmail(emailToSignIn)) {
       setEmailError('Please enter a valid email address');
       return;
     }
   
     setEmailError('');
-    setLoading(true); // Start loading
+    setLoading(true);
   
     try {
-      const deviceType = getDeviceType(); // Get device type
-  
+      const deviceType = getDeviceType();
       const loginResponse = await axios.post('https://backend-chess-tau.vercel.app/signin_inschool', {
         email: emailToSignIn,
-        device_name: deviceType // Send device type to the backend
+        device_name: deviceType
       });
-  
+
       if (loginResponse.data.success) {
         if (loginResponse.data.device) {
           handleLogoutFromPreviousDevice();
           return;
         }
-  
+
         setShowOtpInput(loginResponse.data.otp_required);
         localStorage.setItem('email', emailToSignIn);
-  
+
         const userDetailsResponse = await axios.get('https://backend-chess-tau.vercel.app/getinschooldetails', {
           params: { email: emailToSignIn }
         });
-  
+
         localStorage.setItem('userDetails', JSON.stringify(userDetailsResponse.data.data));
-  
+
         if (!loginResponse.data.otp_required) {
           localStorage.setItem('signin', "true");
           router.push('/portalhome');
         }
-      } else {
-        setMessageText('Email is not registered');
+      }
+      else if(loginResponse.data.status===400){
+        setMessageText('Email Not registered.');
+      }
+      
+      else {
+        setMessageText('Login failed. Please check your email and try again.');
       }
     } catch (error) {
       console.error('Error during SignIn:', error);
-      setMessageText('');
+      setMessageText('Email Not registered. Please try again later.');
     } finally {
-      setLoading(false); // End loading
+      setLoading(false);
     }
   };
-  
 
-  // Function to handle logout from the previous device
   const handleLogoutFromPreviousDevice = async () => {
     if (email) {
       try {
-        // Make API call to delete the session
         const response = await axios.post('https://backend-chess-tau.vercel.app/delete_session_inschool', { email });
 
         if (response.data.success) {
-          // Automatically click the sign-in button to retry the sign-in process
           if (signInButtonRef.current) {
             signInButtonRef.current.click();
           }
@@ -126,11 +122,9 @@ const SignIn = () => {
   };
 
   const verifyOtp = async () => {
-    setLoading(true); // Start loading
+    setLoading(true);
     try {
       const verifyOtpResponse = await axios.post('https://backend-chess-tau.vercel.app/verify_otp_inschool', { email, otp });
-      console.log('Verify OTP response:', verifyOtpResponse.data);
-  
       if (verifyOtpResponse.data.success) {
         localStorage.setItem('signin', "true");
         router.push('/portalhome');
@@ -141,19 +135,17 @@ const SignIn = () => {
       console.error('Error verifying OTP:', error);
       setMessageText('An error occurred while verifying OTP. Please try again later.');
     } finally {
-      setLoading(false); // End loading
+      setLoading(false);
     }
   };
-  
 
   useEffect(() => {
     const storedEmail = localStorage.getItem('email');
     const signinStatus = localStorage.getItem('signin');
     if (storedEmail) {
-      setEmail(storedEmail); // Automatically fill the email input
+      setEmail(storedEmail);
     }
     if (storedEmail && signinStatus === "true") {
-      console.log("emailllllll",localStorage)
       router.push('/portalhome');
     }
   }, []);
@@ -161,7 +153,7 @@ const SignIn = () => {
   return (
     <div className="signup-background">
       {loading ? (
-        <Loading /> // Use the Loading component here
+        <Loading />
       ) : (
         <div className="signup-form-container">
           <div className="signup-form">
@@ -189,7 +181,6 @@ const SignIn = () => {
                 />
               </div>
             )}
-            
             <button
               className="signup-field bg-blue-500 text-white font-bold py-2 px-4 rounded w-full signin-box"
               onClick={() => showOtpInput ? verifyOtp() : signIn(email)}
@@ -199,9 +190,7 @@ const SignIn = () => {
               {showOtpInput ? 'Verify OTP' : 'Sign In'}
             </button>
             <p className="text-pink-500 mb-4 text-center">{messageText}</p>
-            <div className="text-center mt-4">
-              <p className="text-gray-700"> <a href="/signup" className="text-blue-500 hover:underline"></a></p>
-            </div>
+
           </div>
         </div>
       )}
