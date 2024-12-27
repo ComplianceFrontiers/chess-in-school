@@ -75,7 +75,7 @@ const topics = [
       ]
     },
     {
-      title: "7. 3 Stages of the Game: Opening, Middlegame and Endgame",
+      title: "7. Stages of the Game",
       completed: true,
       submodules: [
         { title: "7.1 Opening", completed: true },
