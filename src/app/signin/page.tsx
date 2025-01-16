@@ -192,6 +192,12 @@ const SignIn = () => {
             </button>
             {!showOtpInput && <p className="text-pink-500 mb-4 text-center">{messageText}</p>}
 
+            <div className="text-center mt-4">
+              <p className="text-black">
+                Having Trouble in SignIn ? <a href="mailto:connect@chesschamps.us" className="text-blue-500 underline">Contact us</a>
+              </p>
+            </div>
+
           </div>
         </div>
       )}
