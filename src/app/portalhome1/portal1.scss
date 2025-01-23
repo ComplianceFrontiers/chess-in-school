@@ -8,13 +8,7 @@ body {
 .hero {
   background-color: #2b87e2;
   padding: 20px;
-  max-width: 100%; // Ensure the hero section doesn't exceed the viewport width
-  // Pushes the content to the right side
-
-
-  .headers {
-    // Style for headers if needed
-  }
+  width: 80%;  
 
   .journey-container {
     border: 2px solid #505050; /* Bright, playful border color */
@@ -112,6 +106,8 @@ body {
     text-align: center; // Center text for smaller screens
     padding: 10px;
     width: 80%;
+
+    max-width: 100%;
 
     .journey-container {
       margin: 5px; // Adjust margins for mobile

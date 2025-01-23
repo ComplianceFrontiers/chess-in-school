@@ -9,7 +9,7 @@ body {
 }
 
 .hero {
-  background-color: #2b87e2;
+  background-color: #2b87e2; 
   overflow-y: auto;
   max-width: 100vw; // Ensure the hero section doesn't exceed the viewport width
   // overflow: hidden; // Prevent overflow
@@ -62,7 +62,7 @@ body {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     
         h3 {
-          color: #ffffff;
+          color: rgb(23 37 84);
           font-size: 28px;
           text-align: center;
           font-weight: bold;
@@ -221,11 +221,6 @@ body {
  
 @media (max-width: 768px) {
   .hero {
-    background-color: #2b87e2;
-    overflow-y: auto;
-    max-width: 100vw; // Ensure the hero section doesn't exceed the viewport width
-    // overflow: hidden; // Prevent overflow
-  
     .headers {
   h2 {
     font-size: 20px; 
