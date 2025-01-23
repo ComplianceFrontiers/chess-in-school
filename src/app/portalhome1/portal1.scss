@@ -124,12 +124,54 @@ body {
 
         .steps {
           gap: 10px; // Smaller gap between steps
+          .step {
+            display: flex;
+            align-items: center; // Align items to the start
+            background-color: #a8dadc;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 5px; // Add padding for better spacing
+            border-radius: 5px;
+  
+            .icon {
+              flex-shrink: 0;
+              width: 70px;
+              height: 120px;
+            }
+  
+            h4 {
+              font-family: 'Montserrat', sans-serif;
+              margin: 0;
+              font-size: 12px;
+              font-weight: bold;
+              color: #1d3557;
+            }
+  
+            .level-description {
+              font-size: 11px;
+              color: #457b9d;
+              overflow: hidden; // Prevent overflow
+  
+              @media (max-width: 768px) {
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+  
+                &.expanded {
+                  display: block;
+                  -webkit-line-clamp: unset; // Remove clamping for mobile view when expanded
+                }
+              }
+            }
+          }
         }
 
         button {
           width: 100%; // Full-width buttons for mobile
+          
         }
       }
+      
     }
   }
 }
