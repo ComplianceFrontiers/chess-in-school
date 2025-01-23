@@ -127,22 +127,32 @@ export default function RootLayout({
                       <Sidebar2/>
                   )}
 
-<div className="content-container">
-                    {(pathname === "/admin" ||
-                      pathname === "/admin/admin_upcoming_activities" ||
-                      pathname === "/admin/admin_tournaments" ||
-                      pathname === "/admin/admin_image_demo" ||
-                      pathname === "/admin/StudentDetails") && <AdminHeader />}
+<>
+      {pathname === "/portalhome" ? (
+        <>
+          {(pathname === "/admin" ||
+            pathname === "/admin/admin_upcoming_activities" ||
+            pathname === "/admin/admin_tournaments" ||
+            pathname === "/admin/admin_image_demo" ||
+            pathname === "/admin/StudentDetails") && <AdminHeader />}
 
-  
+          {/* Render children directly without a wrapping div */}
+          {children}
+        </>
+      ) : (
+        <div className="content-container">
+          {(pathname === "/admin" ||
+            pathname === "/admin/admin_upcoming_activities" ||
+            pathname === "/admin/admin_tournaments" ||
+            pathname === "/admin/admin_image_demo" ||
+            pathname === "/admin/StudentDetails") && <AdminHeader />}
 
-  {/* Display SignIn or children based on the pathname */}
-  {pathname === "/" ? (
-    <SignIn />
-  ) : (
-    <>{children}</>
-  )}
-</div>
+          {/* Display SignIn or children based on the pathname */}
+          {pathname === "/" ? <SignIn /> : <>{children}</>}
+        </div>
+      )}
+    </>
+
 
         
         </div>
