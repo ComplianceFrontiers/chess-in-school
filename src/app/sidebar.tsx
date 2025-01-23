@@ -140,15 +140,16 @@ const Sidebar: React.FC = () => {
           />
         </div>
         <div className="role">{userDetails?.child_name?.first}</div>
-        <button
-          onClick={() => router.push("/portalhome")}
-          className="viewProfile"
-        >
-          Home
-        </button>
+        
       </div>
 
       <nav className="nav">
+      <a
+          onClick={() => router.push("/portalhome")}
+         className="navItem school"
+        >
+          <FaCalendarAlt /> My Dashboard
+        </a>
         <a
           onClick={() => {
             if (userDetails?.level === "Level 1") {
