@@ -172,9 +172,12 @@
 @media (max-width: 768px) {
   .sidebar {
   .nav {
-    .navItem {
-      font-size: 0.76rem; // Reduced font size for mobile view
-      // Other styles remain unchanged
+    .navIcon {
+      font-size: 9px; // Adjust icon size 
+    }
+
+    .navText {
+      font-size: 10px; // Adjust text size 
     }
   }
   .profile {

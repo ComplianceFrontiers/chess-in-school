@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { FaPuzzlePiece, FaSignOutAlt, FaCalendarAlt } from "react-icons/fa";
+import { FaPuzzlePiece, FaSignOutAlt, FaCalendarAlt,FaHome } from "react-icons/fa";
 import axios from "axios";
 import "./side.scss";
 import { UserDetails } from "./types/types";
@@ -144,11 +144,11 @@ const Sidebar: React.FC = () => {
       </div>
 
       <nav className="nav">
-      <a
+        <a
           onClick={() => router.push("/portalhome")}
-         className="navItem school"
+        className="navItem logout"
         >
-          <FaCalendarAlt /> My Dashboard
+           <FaHome className="navIcon" />   <span className="navText">Dashboard</span>
         </a>
         <a
           onClick={() => {
@@ -163,8 +163,9 @@ const Sidebar: React.FC = () => {
           }}
           className="navItem school"
         >
-          <FaCalendarAlt /> Learning
-        </a>
+                     <FaCalendarAlt className="navIcon" />   <span className="navText">Learning</span>
+
+         </a>
 
         {userDetails?.level !== "Level 1" && (
           <a
@@ -198,7 +199,8 @@ const Sidebar: React.FC = () => {
           }}
           className="navItem logout"
         >
-          <FaSignOutAlt /> Logout
+                               <FaSignOutAlt className="navIcon" />   <span className="navText">Logout</span>
+ 
         </a>
       </nav>
 
