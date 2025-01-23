@@ -75,7 +75,7 @@
 
       svg {
         margin-right: 10px;
-        font-size: 1.7rem;
+        font-size: 1.5rem;
         transition: color 0.3s;
       }
 
@@ -169,3 +169,36 @@
     }
   }
 }
+@media (max-width: 768px) {
+  .sidebar {
+  .nav {
+    .navItem {
+      font-size: 0.76rem; // Reduced font size for mobile view
+      // Other styles remain unchanged
+    }
+  }
+  .profile {
+    text-align: center;
+    margin-bottom: 10px;
+
+    .avatar {
+      margin-top: 10px;
+      align-items: center;
+      width: 100px; // Adjust the width for a smaller size
+      height: 100px; // Adjust the height for a smaller size
+      border: 3px solid #ddd; // Adjust border thickness for smaller size
+      cursor: pointer;
+      object-fit: cover;
+    }
+    .role {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #eeeff1;
+      padding: 10px 20px;
+      border-radius: 30px;
+      margin-bottom: 15px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+  }
+}}
