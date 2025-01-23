@@ -174,7 +174,8 @@ const Sidebar: React.FC = () => {
             }}
             className="navItem teachers"
           >
-            <FaPuzzlePiece /> Puzzle Arena
+                                 <FaPuzzlePiece className="navIcon" />   <span className="navText">Puzzle Arena</span>
+
           </a>
         )}
 
