@@ -221,6 +221,11 @@ body {
  
 @media (max-width: 768px) {
   .hero {
+    background-color: #2b87e2;
+    overflow-y: auto;
+    max-width: 100vw; // Ensure the hero section doesn't exceed the viewport width
+    // overflow: hidden; // Prevent overflow
+  
     .headers {
   h2 {
     font-size: 20px; 

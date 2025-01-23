@@ -26,15 +26,7 @@
     display: block; // Show the menu button on smaller screens
   }
 
-  .sidebar {
-    width: 350px; // Ensure the sidebar has the same width as defined for larger screens
-    transform: translateX(-100%); // Hide the sidebar by moving it off-screen
-    transition: transform 0.3s ease; // Smooth slide animation
-  }
-
-  .sidebar.open {
-    transform: translateX(0); // Slide the sidebar back into view when open
-  }
+ 
 }
 
 @media (min-width: 2001px) {
@@ -53,7 +45,3 @@
 }
 
 
-.sidebar {
-  width: 350px; /* Adjust the width as needed */
-  background-color: rgb(235, 231, 231); /* Adjust the background color as needed */
-}
