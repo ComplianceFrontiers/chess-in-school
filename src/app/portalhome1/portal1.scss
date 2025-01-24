@@ -5,16 +5,14 @@ body {
   overflow-x: hidden; // Prevent horizontal scrolling
 }
 
-.hero {
-  background-color: #2b87e2;
-  padding: 20px;
+.hero {  
   width: 80%;  
 
   .journey-container {
     border: 2px solid #505050; /* Bright, playful border color */
     border-radius: 12px; /* Rounder corners for a softer look */
     margin: 10px 0; /* Space outside the border */
-    background-color: #1d3557;
+    background-color: rgb(23, 37, 84);
     font-family: 'Montserrat', sans-serif; /* Fun, kid-friendly font */
     color: #f9fbfb;
   }
@@ -23,30 +21,28 @@ body {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+    color: #ffffff;
 
     .level {
       width: 100%; // Full width for mobile
-      background-color: #1d3557; // Darker background for contrast
+      background-color: rgb(23, 37, 84); // Darker background for contrast
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 
       h3 {
-        color: #ffffff;
+        color: white;
         font-size: 28px;
         text-align: center;
-        font-weight: bold;
-        margin-bottom: 20px;
+        font-weight: bold; 
       }
 
       .steps {
         display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        gap: 20px;
+        grid-template-columns: repeat(1, 1fr); 
 
         .step {
           display: flex;
-          align-items: center; // Align items to the start
-          background-color: #a8dadc;
+          align-items: center; 
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
           padding: 5px; // Add padding for better spacing
           border-radius: 5px;
@@ -61,13 +57,11 @@ body {
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             font-size: 15px;
-            font-weight: bold;
-            color: #1d3557;
+            font-weight: bold; 
           }
 
           .level-description {
-            font-size: 13px;
-            color: #457b9d;
+            font-size: 13px; 
             overflow: hidden; // Prevent overflow
 
             @media (max-width: 768px) {
@@ -102,37 +96,31 @@ body {
 
   // Add a media query for mobile view
   @media (max-width: 768px) {
-    text-align: center; // Center text for smaller screens
-    padding: 10px;
+     padding: 5px;
     width: 70%;
-
     max-width: 100%;
-
+  
     .journey-container {
-      margin: 5px; // Adjust margins for mobile
+      margin: 5px; /* Adjust margins for mobile */
     }
-
+  
     .journey {
-      flex-direction: column; // Stack items vertically
+      flex-direction: column; /* Stack items vertically */
       margin-bottom: 10px;
-
+  
       .level {
         h3 {
-          font-size: 15px; // Reduce font size for headings
-        }
-
+          font-size: 15px; /* Reduce font size for headings */
+         }
+  
         .steps {
-          gap: 10px; // Smaller gap between steps
+          color: #ffffff;
+  
           .step {
             display: flex;
-            align-items: center; // Align items to the start
-            background-color: #a8dadc;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            padding: 5px; // Add padding for better spacing
-            border-radius: 5px;
+            align-items: center;
   
             .icon {
-              flex-shrink: 0;
               width: 70px;
               height: 120px;
             }
@@ -142,35 +130,32 @@ body {
               margin: 0;
               font-size: 10px;
               font-weight: bold;
-              color: #1d3557;
+              text-align: left; /* Justify the text for smaller screens */
             }
   
             .level-description {
               font-size: 11px;
-              color: #457b9d;
-              overflow: hidden; // Prevent overflow
+               overflow: hidden; /* Prevent overflow */
   
               @media (max-width: 768px) {
                 overflow: hidden;
-                display: -webkit-box;
                 -webkit-box-orient: vertical;
-                -webkit-line-clamp: 1;
+                -webkit-line-clamp: 3;
   
                 &.expanded {
                   display: block;
-                  -webkit-line-clamp: unset; // Remove clamping for mobile view when expanded
+                  -webkit-line-clamp: unset; /* Remove clamping for mobile view when expanded */
                 }
               }
             }
           }
         }
-
+  
         button {
-          width: 100%; // Full-width buttons for mobile
-          
+          width: 100%; /* Full-width buttons for mobile */
         }
       }
-      
     }
   }
+  
 }
