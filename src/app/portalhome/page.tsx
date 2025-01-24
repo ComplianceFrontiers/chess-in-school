@@ -1,24 +1,24 @@
 /* eslint-disable react/no-unescaped-entities */
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import './portal.scss';
-import { UserDetails, UpcomingActivity } from '../types/types';
-import Loading from '../Loading';
+import { UserDetails } from '../types/types';
 import withAuth from '../withAuth';
 import { useRouter } from 'next/navigation';
 import Hero1 from '../portalhome1/hero1';
 import Commingsoon from '../commingsoon';
+import Loading from '../Loading';
 
 const Hero = () => {
   const router = useRouter();
   const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
-  const [expanded, setExpanded] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState('');
+  const [loading, setLoading] = useState(true);
 
-  const openModal = (message: React.SetStateAction<string>) => {
+  const openModal = (message: string) => {
     setModalContent(message);
     setModalOpen(true);
   };
@@ -28,55 +28,54 @@ const Hero = () => {
     setModalContent('');
   };
 
+  // Fetch user details
   useEffect(() => {
     const fetchUserDetails = async () => {
-      if (typeof window !== 'undefined') {
+      setLoading(true);
+      try {
         const userDetailsString = localStorage.getItem('userDetails');
         const storedUserDetails = userDetailsString ? JSON.parse(userDetailsString) : null;
 
         if (storedUserDetails) {
-          setUserDetails(storedUserDetails); // Set user details from localStorage
-
-          try {
-            const response = await axios.get(
-              `https://backend-chess-tau.vercel.app/getinschooldetails?email=${storedUserDetails.email}`
-            );
-            setUserDetails(response.data.data); // Update with data from API
-          } catch (error) {
-            console.error('Error fetching user details:', error);
-          }
+          const response = await axios.get(
+            `https://backend-chess-tau.vercel.app/getinschooldetails?email=${storedUserDetails.email}`
+          );
+          setUserDetails(response.data.data || storedUserDetails);
         }
+      } catch (error) {
+        console.error('Error fetching user details:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchUserDetails();
   }, []);
+
+  // Window resize listener with debounce
   useEffect(() => {
-    // Function to check if the viewport is mobile-sized
     const handleResize = () => {
-      if (window.innerWidth <= 768) {
-        document.body.style.overflowY = 'auto'; // Enable scroll for mobile
-      } else {
-        document.body.style.overflowY = 'hidden'; // Disable scroll for larger screens
-      }
+      const isMobile = window.innerWidth <= 768;
+      document.body.style.overflowY = isMobile ? 'auto' : 'hidden';
     };
 
-    // Set the initial overflow style
-    handleResize();
+    const debounceResize = () => {
+      clearTimeout((handleResize as any).timeout);
+      (handleResize as any).timeout = setTimeout(handleResize, 100);
+    };
 
-    // Listen for window resize events
-    window.addEventListener('resize', handleResize);
+    handleResize(); // Initial check
+    window.addEventListener('resize', debounceResize);
 
     return () => {
-      // Clean up the event listener
-      window.removeEventListener('resize', handleResize);
-      document.body.style.overflowY = 'hidden'; // Reset overflow when unmounting
+      clearTimeout((handleResize as any).timeout);
+      window.removeEventListener('resize', debounceResize);
+      document.body.style.overflowY = 'hidden'; // Reset on unmount
     };
   }, []);
 
   const getActiveClass = (level: string) => {
     if (!userDetails) return '';
-
     const levelMap: { [key: string]: number } = {
       'Level 1': 1,
       'Level 2': 2,
@@ -85,35 +84,23 @@ const Hero = () => {
       'Level 5': 5,
       'Level 6': 6,
     };
-
     const userLevel = levelMap[userDetails.level];
     const currentLevel = levelMap[level];
-
     return currentLevel <= userLevel ? 'active' : 'inactive';
   };
 
-  const toggleExpand = () => {
-    setExpanded(!expanded);
-  };
-
-  const isMobile = () => {
-    return window.innerWidth <= 768; // Change this value based on your design requirements
-  };
   const handleImageClick = (level: string) => {
     if (level === '2') {
-      openModal("Coming Soon! Level 2 content will be available shortly.");
+      openModal('Coming Soon! Level 2 content will be available shortly.');
       return;
     }
-
     if (getActiveClass(`Level ${level}`) === 'active') {
-      router.push(`/Afterschool${level}`); // Redirect to the corresponding level page
+      router.push(`/Afterschool${level}`);
     }
   };
-  
 
   const getConnectorWidth = () => {
     if (!userDetails) return '0%';
-
     const levelMap: { [key: string]: number } = {
       'Level 1': 7,
       'Level 2': 20,
@@ -122,14 +109,12 @@ const Hero = () => {
       'Level 5': 80,
       'Level 6': 100,
     };
-
     const userLevel = levelMap[userDetails.level];
     return `${userLevel}%`;
   };
 
   const getConnectorColor = () => {
     if (!userDetails) return 'white';
-
     const levelMap: { [key: string]: number } = {
       'Level 1': 1,
       'Level 2': 2,
@@ -138,13 +123,16 @@ const Hero = () => {
       'Level 5': 5,
       'Level 6': 6,
     };
-
     const userLevel = levelMap[userDetails.level];
-  return userLevel > 0 ? '#f26722' : 'white'; // Change color based on the highest active level
+    return userLevel > 0 ? '#f26722' : 'white';
   };
 
+  if (loading) {
+    return <Loading />;
+  }
+
   if (!userDetails) {
-    return null; // If userDetails is null, return null to prevent rendering the page
+    return <div>No user details available.</div>;
   }
 
   return (
@@ -152,7 +140,6 @@ const Hero = () => {
       <div className="headers">
         <h2>Your Chess Journey</h2>
       </div>
-
       <div className="journey-container">
         <div className="chess-journey">
           <div className="level">
@@ -160,7 +147,7 @@ const Hero = () => {
               <line
                 x1="0"
                 y1="5"
-                x2={getConnectorWidth()} // Use the width directly
+                x2={getConnectorWidth()}
                 y2="5"
                 stroke={getConnectorColor()}
                 strokeWidth="10"
@@ -168,9 +155,9 @@ const Hero = () => {
             </svg>
 
             <div className={`step ${getActiveClass('Level 1')}`} onClick={() => handleImageClick('1')}>
-              <div className="icon">
+                <div className="icon">
                 <img src="/images/chessicons/4.png" alt="Pawn" className="chess-icon pawn" />
-              </div>
+                </div>
               <p>Pawn</p>
               <p>(Absolute Beginners)</p>
             </div>
