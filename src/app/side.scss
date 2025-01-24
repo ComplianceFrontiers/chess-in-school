@@ -180,6 +180,13 @@
     .navText {
       font-size: 10px; // Adjust text size 
     }
+    .navItem{
+    svg {
+      margin-right: 5px;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+  }
   }
   .profile {
     text-align: center;
