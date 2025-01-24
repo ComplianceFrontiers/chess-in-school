@@ -157,7 +157,7 @@ const Hero = () => {
 
             <div className={`step ${getActiveClass('Level 1')}`} onClick={() => handleImageClick('1')}>
                 <div className="icon">
-                <Image src="/images/chessicons/4.png" alt="Pawn" className="chess-icon pawn" width={100}
+                <Image priority src="/images/chessicons/4.png" alt="Pawn" className="chess-icon pawn" width={100}
   height={100} />
                 </div>
               <p>Pawn</p>
@@ -166,7 +166,7 @@ const Hero = () => {
 
             <div className={`step ${getActiveClass('Level 2')}`} onClick={() => handleImageClick('2') }>
               <div className="icon">
-                <Image src="/images/chessicons/1.png" alt="Knight" className="chess-icon knight" width={100}
+                <Image priority src="/images/chessicons/1.png" alt="Knight" className="chess-icon knight" width={100}
   height={100}/>
               </div>
               <p>Knight</p>
@@ -175,7 +175,7 @@ const Hero = () => {
 
             <div className={`step ${getActiveClass('Level 3')}`} onClick={() => handleImageClick('3')}>
               <div className="icon">
-                <Image src="/images/chessicons/5.png" alt="Bishop" className="chess-icon bishop" width={100}
+                <Image priority src="/images/chessicons/5.png" alt="Bishop" className="chess-icon bishop" width={100}
   height={100} />
               </div>
               <p>Bishop</p>
@@ -184,7 +184,7 @@ const Hero = () => {
 
             <div className={`step ${getActiveClass('Level 4')}`} onClick={() => handleImageClick('4')}>
               <div className="icon">
-                <Image src="/images/chessicons/3.png" alt="Rook" className="chess-icon rook" width={100}
+                <Image priority src="/images/chessicons/3.png" alt="Rook" className="chess-icon rook" width={100}
   height={100}/>
               </div>
               <p>Rook</p>
@@ -193,7 +193,7 @@ const Hero = () => {
 
             <div className={`step ${getActiveClass('Level 5')}`} onClick={() => handleImageClick('5')}>
               <div className="icon">
-                <Image src="/images/chessicons/6.png" alt="Queen" className="chess-icon queen" width={100}
+                <Image priority src="/images/chessicons/6.png" alt="Queen" className="chess-icon queen" width={100}
   height={100}/>
               </div>
               <p>Queen</p>
@@ -202,7 +202,7 @@ const Hero = () => {
 
             <div className={`step ${getActiveClass('Level 6')}`} onClick={() => handleImageClick('6')}>
               <div className="icon">
-                <Image src="/images/chessicons/2.png" alt="King" className="chess-icon king" width={100}
+                <Image priority src="/images/chessicons/2.png" alt="King" className="chess-icon king" width={100}
   height={100}/>
               </div>
               <p>King</p>

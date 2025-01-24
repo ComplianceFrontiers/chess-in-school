@@ -41,7 +41,7 @@ const Hero1 = () => {
           <div className="step">
             <div className="icon">
               <Image width={100}
-  height={100} src="/images/characters/Pawn.png" alt="Pawn Icon" />
+  height={100}  priority src="/images/characters/Pawn.png" alt="Pawn Icon"/>
             </div>
             <div>
               <h4>Level 1: Pawn (Absolute Beginners)</h4>
@@ -65,7 +65,7 @@ const Hero1 = () => {
           <div className="step">
             <div className="icon">
               <Image width={100}
-  height={100} src="/images/characters/Knight.png" alt="Knight Icon" />
+  height={100}  priority src="/images/characters/Knight.png" alt="Knight Icon" />
             </div>
             <div>
               <h4>Level 2: Knight (Novice Players)</h4>
@@ -89,7 +89,7 @@ const Hero1 = () => {
           <div className="step">
             <div className="icon">
               <Image width={100}
-  height={100} src="/images/characters/Archer bishop.png" alt="Bishop Icon" />
+  height={100}  priority src="/images/characters/Archer bishop.png" alt="Bishop Icon" />
             </div>
             <div>
               <h4>Level 3: Bishop (Intermediate Players)</h4>
@@ -113,7 +113,7 @@ const Hero1 = () => {
           <div className="step">
             <div className="icon">
               <Image width={100}
-  height={100} src="/images/characters/Rook.png" alt="Rook Icon" />
+  height={100}  priority src="/images/characters/Rook.png" alt="Rook Icon" />
             </div>
             <div>
               <h4>Level 4: Rook (Advanced Players)</h4>
@@ -137,7 +137,7 @@ const Hero1 = () => {
           <div className="step">
             <div className="icon">
               <Image width={100}
-  height={100} src="/images/characters/Worrior Queen.png" alt="Queen Icon" />
+  height={100}  priority src="/images/characters/Worrior Queen.png" alt="Queen Icon" />
             </div>
             <div>
               <h4>Level 5: Queen (Expert Players)</h4>
@@ -161,7 +161,7 @@ const Hero1 = () => {
           <div className="step">
             <div className="icon">
             <Image width={100}
-  height={100} src="/images/characters/King1.png" alt="King Icon" />
+  height={100}  priority src="/images/characters/King1.png" alt="King Icon" />
             </div>
             <div>
               <h4>Level 6: King (Mastery Level)</h4>
