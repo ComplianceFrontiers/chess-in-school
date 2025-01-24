@@ -8,8 +8,7 @@ import "./si.scss";
 import SignIn from "./signin/page";
 import { useState, useEffect } from "react";
 import Sidebar1 from "./sidebar1"; 
-import Sidebar2 from "./sidebar2";
-import MenuButton from "./MenuBar";
+import Sidebar2 from "./sidebar2"; 
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,23 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const toggleSidebar = () => {
-    setSidebarOpen((prev) => !prev);
-  };
-   // Close sidebar when window resizes to mobile view
-   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setSidebarOpen(false); // Automatically close sidebar in mobile view
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-    handleResize(); // Initial check on component mount
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+ 
+  
 
   return (
     <html lang="en">
@@ -64,7 +48,7 @@ export default function RootLayout({
                     pathname === "/Afterschool1" ||
                     pathname === "/Afterschool2" ||
                     pathname === "/coaching") && (
-                      <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />                    )}
+                      <Sidebar />                    )}
 
                   {(pathname === "/modules/level1/introduction/11" ||
                     pathname === "/modules/level1/theChessboard/21" ||
@@ -143,27 +127,33 @@ export default function RootLayout({
                       <Sidebar2/>
                   )}
 
-                  <div className="content-container">
-                    {(pathname === "/admin" ||
-                      pathname === "/admin/admin_upcoming_activities" ||
-                      pathname === "/admin/admin_tournaments" ||
-                      pathname === "/admin/admin_image_demo" ||
-                      pathname === "/admin/StudentDetails") && <AdminHeader />}
-                    
-                    {/* Conditional rendering of the hamburger button */}
-                    {pathname !== "/" && pathname !== "/signin" && !pathname.startsWith("/modules/level1/") && !pathname.startsWith("/modules/level2/") && !pathname.startsWith("/admin") &&(
-                      <MenuButton onClick={toggleSidebar} />
-                    )}
-                    
-                    {pathname === "/" ? (
-                            <SignIn />
-                          ) : (
-                            <>
-                              {children}
-                            </>
-                          )}
+<>
+      {pathname === "/portalhome" ? (
+        <>
+          {(pathname === "/admin" ||
+            pathname === "/admin/admin_upcoming_activities" ||
+            pathname === "/admin/admin_tournaments" ||
+            pathname === "/admin/admin_image_demo" ||
+            pathname === "/admin/StudentDetails") && <AdminHeader />}
 
-                  </div>
+          {/* Render children directly without a wrapping div */}
+          {children}
+        </>
+      ) : (
+        <div className="content-container">
+          {(pathname === "/admin" ||
+            pathname === "/admin/admin_upcoming_activities" ||
+            pathname === "/admin/admin_tournaments" ||
+            pathname === "/admin/admin_image_demo" ||
+            pathname === "/admin/StudentDetails") && <AdminHeader />}
+
+          {/* Display SignIn or children based on the pathname */}
+          {pathname === "/" ? <SignIn /> : <>{children}</>}
+        </div>
+      )}
+    </>
+
+
         
         </div>
       </body>

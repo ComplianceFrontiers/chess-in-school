@@ -30,8 +30,7 @@ h1 {
 .courses-section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-column-gap: 15px;
-  grid-row-gap: 15px;
+  grid-column-gap: 15px; 
   margin: 0;
   padding: 0;
 }

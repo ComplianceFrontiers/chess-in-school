@@ -1,36 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
 .sidebar {
-  width: 350px;
-  height: 100vh;
-  background-color: #f8f9fa;
+  width: 16rem; // Tailwind's w-64
+  height: 100vh; // Tailwind's h-screen
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
+  flex-direction: column; // Tailwind's flex-col
+  align-items: center; // Tailwind's items-center
+  overflow-y: scroll; // Tailwind's overflow-y-scroll
+   background-color: rgb(23 37 84); // Tailwind's bg-blue-950
+  color: white; // Tailwind's text-white
   transition: all 0.3s ease;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  
+
+  // Closed state for the sidebar
   &.closed {
     width: 0;
     overflow: hidden;
   }
+ 
 
-  @media (max-width: 768px) {
-    width: 0;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-
-    &.open {
-      width: 250px;
-      transform: translateX(0);
-      transition: transform 0.3s ease;
-    }
-  }
-
+  // Profile section
   .profile {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 
     .avatar {
       border-radius: 50%;
@@ -43,147 +34,64 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 2rem;
       font-weight: bold;
-      color: #0075d4;
+      color: #eeeff1;
       padding: 10px 20px;
       border-radius: 30px;
       margin-bottom: 15px;
       box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     }
-
-    .viewProfile {
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-
-      &:hover {
-        background-color: #0056b3;
-      }
-    }
+ 
   }
 
+  // Navigation section
   .nav {
     display: flex;
     flex-direction: column;
     width: 100%;
-    overflow-y: auto; /* Enable vertical scrolling */
-    padding-right: 10px; /* Add some padding to avoid content touching the scrollbar */
-    cursor: pointer;
+    overflow-y: auto; // Enable vertical scrolling
+    padding-right: 10px;
 
     .navItem {
       display: flex;
       align-items: center;
       padding: 10px 20px;
       text-decoration: none;
-      color: #333;
-      border-radius: 15px;
+      color: white; // Default text color
+      cursor: pointer;
       margin-bottom: 10px;
       transition: background-color 0.3s, color 0.3s;
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.2rem; /* Default font size */
+      font-size: 1rem;
       font-weight: bold;
-    
+
       &:hover {
-        background-color: #e9ecef;
-        color: #007bff;
-    
+        background-color: #1d4ed8; // Tailwind's hover:bg-blue-700
+        color: #e5e7eb; // Tailwind's text-gray-100
+
         svg {
-          color: #007bff;
+          color: #e5e7eb; // Tailwind's text-gray-100
         }
       }
-    
+
       svg {
         margin-right: 10px;
-        font-size: 1.7rem;
+        font-size: 1.5rem;
         transition: color 0.3s;
       }
-    
+
+      // Example for different nav items
       &.home {
-        background-color: #ff6347; /* Tomato */
+        background-color: #ff6347; // Tomato
         color: white;
-    
+
         &:hover {
-          background-color: #ff6347;
-        }
-      }
-    
-      &.tests {
-        background-color: #ff6347; /* SteelBlue */
-        color: white;
-    
-        &:hover {
-          background-color: #ff6347;
-        }
-      }
-    
-      &.test {
-        background-color: #403ec0; /* SteelBlue */
-        color: white;
-    
-        &:hover {
-          background-color: #605de1;
-        }
-      }
-    
-      &.classes {
-        background-color: #32cd32; /* LimeGreen */
-        color: white;
-    
-        &:hover {
-          background-color: #32cd32;
-        }
-      }
-    
-      &.teachers {
-        background-color: #ff8c00; /* DarkOrange */
-        color: white;
-    
-        &:hover {
-          background-color: #ff8c00;
-        }
-      }
-    
-      &.events {
-        background-color: #8a2be2; /* BlueViolet */
-        color: white;
-    
-        &:hover {
-          background-color: #8a2be2;
-        }
-      }
-    
-      &.school {
-        background-color: #888211; /* BlueViolet */
-        color: rgb(243, 244, 243);
-    
-        &:hover {
-          background-color: #8f9a12;
-        }
-      }
-    
-      &.logout {
-        background-color: #ee2e08; /* BlueViolet */
-        color: white;
-    
-        &:hover {
-          background-color: #d3340c;
-        }
-      }
-    
-      /* Mobile-specific styles */
-      @media (max-width: 768px) {
-        font-size: 1rem; /* Smaller font size for mobile */
-        svg {
-          font-size: 1.5rem; /* Smaller icon size for mobile */
+          background-color: #ff4500; // Darker tomato
         }
       }
     }
-    
   }
 }
+
 
 // Full-Screen Modal Styles
 .avatarModal {
@@ -200,6 +108,7 @@
 
   .modalContent {
     background: #ffeb3b;
+    color:#000;
     border-radius: 8px;
     padding: 20px;
     width: 90%;
@@ -261,3 +170,39 @@
     }
   }
 }
+@media (max-width: 768px) {
+  .sidebar {
+  .nav {
+    .navIcon {
+      font-size: 9px; // Adjust icon size 
+    }
+
+    .navText {
+      font-size: 10px; // Adjust text size 
+    }
+  }
+  .profile {
+    text-align: center;
+    margin-bottom: 10px;
+
+    .avatar {
+      margin-top: 10px;
+      align-items: center;
+      width: 100px; // Adjust the width for a smaller size
+      height: 100px; // Adjust the height for a smaller size
+      border: 3px solid #ddd; // Adjust border thickness for smaller size
+      cursor: pointer;
+      object-fit: cover;
+    }
+    .role {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #eeeff1;
+      padding: 10px 20px;
+      border-radius: 30px;
+      margin-bottom: 15px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+  }
+}}
