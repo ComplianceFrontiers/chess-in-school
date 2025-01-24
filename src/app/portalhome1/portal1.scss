@@ -1,19 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Corben:wght@400;700&family=Lilita+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Corben:wght@400;700&family=Lilita+One&family=Matemasie&display=swap');
 
 body {
-  overflow-x: hidden; // Prevent horizontal scrolling
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-.hero {  
-  width: 80%;  
-
+.hero {
+  width: 80%;
   .journey-container {
-    border: 2px solid #505050; /* Bright, playful border color */
-    border-radius: 12px; /* Rounder corners for a softer look */
-    margin: 10px 0; /* Space outside the border */
+    border: 2px solid #505050;
+    border-radius: 12px;
+    margin: 10px 0;
     background-color: rgb(23, 37, 84);
-    font-family: 'Montserrat', sans-serif; /* Fun, kid-friendly font */
+    font-family: 'Montserrat', sans-serif;
     color: #f9fbfb;
   }
 
@@ -22,10 +20,9 @@ body {
     justify-content: center;
     margin-bottom: 20px;
     color: #ffffff;
-
     .level {
-      width: 100%; // Full width for mobile
-      background-color: rgb(23, 37, 84); // Darker background for contrast
+      width: 100%;
+      background-color: rgb(23, 37, 84);
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 
@@ -33,18 +30,17 @@ body {
         color: white;
         font-size: 28px;
         text-align: center;
-        font-weight: bold; 
+        font-weight: bold;
       }
 
       .steps {
         display: grid;
-        grid-template-columns: repeat(1, 1fr); 
-
+        grid-template-columns: repeat(1, 1fr);
         .step {
           display: flex;
-          align-items: center; 
+          align-items: center;
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-          padding: 5px; // Add padding for better spacing
+          padding: 5px;
           border-radius: 5px;
 
           .icon {
@@ -57,22 +53,19 @@ body {
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             font-size: 15px;
-            font-weight: bold; 
+            font-weight: bold;
           }
 
           .level-description {
-            font-size: 13px; 
-            overflow: hidden; // Prevent overflow
-
+            font-size: 13px;
+            overflow: hidden;
             @media (max-width: 768px) {
-              overflow: hidden;
               display: -webkit-box;
               -webkit-box-orient: vertical;
               -webkit-line-clamp: 1;
-
               &.expanded {
                 display: block;
-                -webkit-line-clamp: unset; // Remove clamping for mobile view when expanded
+                -webkit-line-clamp: unset;
               }
             }
           }
@@ -80,82 +73,62 @@ body {
       }
 
       button {
-        color: #f26722; // Button color
+        color: #f26722;
         border: none;
         padding: 10px 20px;
         border-radius: 5px;
         cursor: pointer;
         margin-top: 10px;
-
         &:hover {
-          color: #a33c00; // Darker shade on hover
+          color: #a33c00;
         }
       }
     }
   }
 
-  // Add a media query for mobile view
   @media (max-width: 768px) {
-     padding: 5px;
+    padding: 5px;
     width: 70%;
     max-width: 100%;
-  
+
     .journey-container {
-      margin: 5px; /* Adjust margins for mobile */
+      margin: 5px;
     }
-  
+
     .journey {
-      flex-direction: column; /* Stack items vertically */
+      flex-direction: column;
       margin-bottom: 10px;
-  
+
       .level {
         h3 {
-          font-size: 15px; /* Reduce font size for headings */
-         }
-  
+          font-size: 15px;
+        }
+
         .steps {
-          color: #ffffff;
-  
           .step {
             display: flex;
             align-items: center;
-  
             .icon {
               width: 70px;
               height: 120px;
             }
-  
+
             h4 {
-              font-family: 'Montserrat', sans-serif;
-              margin: 0;
               font-size: 10px;
               font-weight: bold;
-              text-align: left; /* Justify the text for smaller screens */
+              text-align: left;
             }
-  
+
             .level-description {
               font-size: 11px;
-               overflow: hidden; /* Prevent overflow */
-  
-              @media (max-width: 768px) {
-                overflow: hidden;
-                -webkit-box-orient: vertical;
-                -webkit-line-clamp: 3;
-  
-                &.expanded {
-                  display: block;
-                  -webkit-line-clamp: unset; /* Remove clamping for mobile view when expanded */
-                }
-              }
             }
           }
         }
-  
+
         button {
-          width: 100%; /* Full-width buttons for mobile */
+          width: 100%;
         }
       }
     }
   }
-  
 }

@@ -1,16 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './portal1.scss';
-import withAuth from '../withAuth';
 import Image from 'next/image';
-const Hero1 = () => {
-  // Define the keys for levels
-  type LevelKeys = 'level1' | 'level2' | 'level3' | 'level4' | 'level5' | 'level6';
 
-  // State to track which levels are expanded
-  const [expandedLevels, setExpandedLevels] = useState<Record<LevelKeys, boolean>>({
+const Hero1 = () => {
+ type LevelKeys = 'level1' | 'level2' | 'level3' | 'level4' | 'level5' | 'level6';
+
+  const [expandedLevels, setExpandedLevels] = useState({
     level1: false,
     level2: false,
     level3: false,
@@ -18,6 +16,8 @@ const Hero1 = () => {
     level5: false,
     level6: false,
   });
+
+  const [isMobileView, setIsMobileView] = useState(false);
 
   // Function to toggle the expand/collapse state for a specific level
   const toggleExpand = (level: LevelKeys) => {
@@ -27,10 +27,18 @@ const Hero1 = () => {
     }));
   };
 
-  // Function to check if the current view is mobile
-  const isMobile = () => {
-    return window.innerWidth <= 768; // Adjust based on design requirements
+  // Check if the view is mobile and handle resizing
+  const checkMobileView = () => {
+    setIsMobileView(window.innerWidth <= 768);
   };
+
+  useEffect(() => {
+    checkMobileView();
+    window.addEventListener('resize', checkMobileView);
+    return () => {
+      window.removeEventListener('resize', checkMobileView);
+    };
+  }, []);
 
   return (
     <div className="journey">
@@ -40,8 +48,7 @@ const Hero1 = () => {
           {/* Level 1 */}
           <div className="step">
             <div className="icon">
-              <Image width={100}
-  height={100}  priority src="/images/characters/Pawn.png" alt="Pawn Icon"/>
+              <Image width={100} height={100} priority src="/images/characters/Pawn.png" alt="Pawn Icon" />
             </div>
             <div>
               <h4>Level 1: Pawn (Absolute Beginners)</h4>
@@ -53,7 +60,7 @@ const Hero1 = () => {
                   </span>
                 )}
               </p>
-              {isMobile() && (
+              {isMobileView && (
                 <button onClick={() => toggleExpand('level1')}>
                   {expandedLevels.level1 ? 'Show Less' : 'Learn More'}
                 </button>
@@ -64,8 +71,7 @@ const Hero1 = () => {
           {/* Level 2 */}
           <div className="step">
             <div className="icon">
-              <Image width={100}
-  height={100}  priority src="/images/characters/Knight.png" alt="Knight Icon" />
+              <Image width={100} height={100} priority src="/images/characters/Knight.png" alt="Knight Icon" />
             </div>
             <div>
               <h4>Level 2: Knight (Novice Players)</h4>
@@ -77,7 +83,7 @@ const Hero1 = () => {
                   </span>
                 )}
               </p>
-              {isMobile() && (
+              {isMobileView && (
                 <button onClick={() => toggleExpand('level2')}>
                   {expandedLevels.level2 ? 'Show Less' : 'Learn More'}
                 </button>
@@ -101,7 +107,7 @@ const Hero1 = () => {
                   </span>
                 )}
               </p>
-              {isMobile() && (
+              {isMobileView && (
                 <button onClick={() => toggleExpand('level3')}>
                   {expandedLevels.level3 ? 'Show Less' : 'Learn More'}
                 </button>
@@ -125,7 +131,7 @@ const Hero1 = () => {
                   </span>
                 )}
               </p>
-              {isMobile() && (
+              {isMobileView && (
                 <button onClick={() => toggleExpand('level4')}>
                   {expandedLevels.level4 ? 'Show Less' : 'Learn More'}
                 </button>
@@ -149,7 +155,7 @@ const Hero1 = () => {
                   </span>
                 )}
               </p>
-              {isMobile() && (
+              {isMobileView && (
                 <button onClick={() => toggleExpand('level5')}>
                   {expandedLevels.level5 ? 'Show Less' : 'Learn More'}
                 </button>
@@ -173,7 +179,7 @@ const Hero1 = () => {
                   </span>
                 )}
               </p>
-              {isMobile() && (
+              {isMobileView && (
                 <button onClick={() => toggleExpand('level6')}>
                   {expandedLevels.level6 ? 'Show Less' : 'Learn More'}
                 </button>
@@ -186,4 +192,4 @@ const Hero1 = () => {
   );
 };
 
-export default withAuth(Hero1);
+export default Hero1;
