@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import './portal1.scss';
 import withAuth from '../withAuth';
-
+import Image from 'next/image';
 const Hero1 = () => {
   // Define the keys for levels
   type LevelKeys = 'level1' | 'level2' | 'level3' | 'level4' | 'level5' | 'level6';
@@ -40,7 +40,8 @@ const Hero1 = () => {
           {/* Level 1 */}
           <div className="step">
             <div className="icon">
-              <img src="/images/characters/Pawn.png" alt="Pawn Icon" />
+              <Image width={100}
+  height={100} src="/images/characters/Pawn.png" alt="Pawn Icon" />
             </div>
             <div>
               <h4>Level 1: Pawn (Absolute Beginners)</h4>
@@ -63,7 +64,8 @@ const Hero1 = () => {
           {/* Level 2 */}
           <div className="step">
             <div className="icon">
-              <img src="/images/characters/Knight.png" alt="Knight Icon" />
+              <Image width={100}
+  height={100} src="/images/characters/Knight.png" alt="Knight Icon" />
             </div>
             <div>
               <h4>Level 2: Knight (Novice Players)</h4>
@@ -86,7 +88,8 @@ const Hero1 = () => {
           {/* Level 3 */}
           <div className="step">
             <div className="icon">
-              <img src="/images/characters/Archer bishop.png" alt="Bishop Icon" />
+              <Image width={100}
+  height={100} src="/images/characters/Archer bishop.png" alt="Bishop Icon" />
             </div>
             <div>
               <h4>Level 3: Bishop (Intermediate Players)</h4>
@@ -109,7 +112,8 @@ const Hero1 = () => {
           {/* Level 4 */}
           <div className="step">
             <div className="icon">
-              <img src="/images/characters/Rook.png" alt="Rook Icon" />
+              <Image width={100}
+  height={100} src="/images/characters/Rook.png" alt="Rook Icon" />
             </div>
             <div>
               <h4>Level 4: Rook (Advanced Players)</h4>
@@ -132,7 +136,8 @@ const Hero1 = () => {
           {/* Level 5 */}
           <div className="step">
             <div className="icon">
-              <img src="/images/characters/Worrior Queen.png" alt="Queen Icon" />
+              <Image width={100}
+  height={100} src="/images/characters/Worrior Queen.png" alt="Queen Icon" />
             </div>
             <div>
               <h4>Level 5: Queen (Expert Players)</h4>
@@ -155,7 +160,8 @@ const Hero1 = () => {
           {/* Level 6 */}
           <div className="step">
             <div className="icon">
-            <img src="/images/characters/King1.png" alt="King Icon" />
+            <Image width={100}
+  height={100} src="/images/characters/King1.png" alt="King Icon" />
             </div>
             <div>
               <h4>Level 6: King (Mastery Level)</h4>
