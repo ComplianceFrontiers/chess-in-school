@@ -298,7 +298,7 @@ const Sidebar1: React.FC = () => {
               <span className="topics-count">{topics.length} Topics</span>
             </span>
           </div>
-          <div className="topics1">
+          
             {topics.map((topic, index) => (
               <div
                 className={`topic1 ${topic.completed ? "completed" : ""}`}
@@ -321,7 +321,7 @@ const Sidebar1: React.FC = () => {
                 </div>
               </div>
             ))}
-          </div>
+        
         </div>
       )}
       {showAlert && (
