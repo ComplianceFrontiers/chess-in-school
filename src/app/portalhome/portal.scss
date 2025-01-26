@@ -192,15 +192,15 @@ body {
       }
     }
   
-    .connector {
+    .connector-gap {
       position: absolute;
-      top: 80px;
+      top: 65px;
       left: 0;
       width: 100%;
-      height: 10px;
-      z-index: 1;
-      transform: translateY(-100%);
-      
+      border-radius: 50px;
+      height: 100px;
+      z-index: 0;
+      transform: translateY(-54.5%);
     }
     
     .chess-icon {
@@ -299,7 +299,7 @@ body {
   }
 }
   }
- .connector {
+ .connector-gap {
    
   display: none;
 } }

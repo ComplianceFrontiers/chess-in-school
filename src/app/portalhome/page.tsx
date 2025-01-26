@@ -104,10 +104,10 @@ const Hero = () => {
     if (!userDetails) return '0%';
     const levelMap: { [key: string]: number } = {
       'Level 1': 7,
-      'Level 2': 20,
-      'Level 3': 40,
-      'Level 4': 60,
-      'Level 5': 80,
+      'Level 2': 25,
+      'Level 3': 43,
+      'Level 4': 63,
+      'Level 5': 83,
       'Level 6': 100,
     };
     const userLevel = levelMap[userDetails.level];
@@ -143,17 +143,20 @@ const Hero = () => {
       </div>
       <div className="journey-container">
         <div className="chess-journey">
-          <div className="level">
-            <svg className="connector" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 10" preserveAspectRatio="none">
-              <line
-                x1="0"
-                y1="5"
-                x2={getConnectorWidth()}
-                y2="5"
-                stroke={getConnectorColor()}
-                strokeWidth="10"
-              />
-            </svg>
+        <div className="level">
+  
+
+   <svg className="connector-gap" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 10" preserveAspectRatio="none">
+    <rect
+      x="0"
+      y="0"
+      width={getConnectorWidth()}
+      height="10"
+      fill={getConnectorColor()} // Fill color for the gap
+    />
+  </svg>
+
+   
 
             <div className={`step ${getActiveClass('Level 1')}`} onClick={() => handleImageClick('1')}>
                 <div className="icon">
