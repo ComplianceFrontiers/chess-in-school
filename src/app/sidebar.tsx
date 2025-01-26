@@ -178,6 +178,16 @@ const Sidebar: React.FC = () => {
 
           </a>
         )}
+         {userDetails?.email == "test@gmail.com" && (
+          <a
+            onClick={() => {
+              router.push("/Afterschool2");            }}
+            className="navItem teachers"
+          >
+                                 <FaPuzzlePiece className="navIcon" />   <span className="navText">Puzzle Arena</span>
+
+          </a>
+        )}
 
         <a
           onClick={async () => {

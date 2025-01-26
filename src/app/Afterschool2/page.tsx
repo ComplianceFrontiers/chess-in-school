@@ -44,6 +44,7 @@ const MyAccount = () => {
   const router = useRouter();
   const [courseStatuses, setCourseStatuses] = useState<{ [key: string]: CourseStatus }>({});
   const [loading, setLoading] = useState(false); // Loading state
+  const [showModal, setShowModal] = useState(false); // Modal state temp
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -59,8 +60,8 @@ const MyAccount = () => {
           if (response.data.success) {
             const registeredCourses = response.data.data.registered_inschool_courses;
             const statuses = registeredCourses.reduce((acc: { [key: string]: CourseStatus }, course: { course_title: string, status: string, completed: number }) => {
-              acc[course.course_title] = { status: course.status, completed: course.completed };
-              return acc;
+                acc[course.course_title] = { status: course.status, completed: course.completed };
+                return acc;
             }, {});
 
             setCourseStatuses(statuses);
@@ -75,12 +76,19 @@ const MyAccount = () => {
 
     fetchUserDetails();
   }, []);
+  useEffect(() => {
+    document.body.style.overflowY = 'auto'; // Ensure scroll is enabled when navigating back
+    return () => {
+      document.body.style.overflowY = 'hidden'; // Clean up if needed when navigating away
+    };
+  }, []);
 
   const handleViewProgress = async (courseTitle: string) => {
     const path = coursePaths[courseTitle];
+    
     if (path) {
       try {
-        setLoading(true);  // Show loading animation
+        setLoading(true);
         const userDetailsString = localStorage.getItem('userDetails');
         const storedUserDetails = userDetailsString ? JSON.parse(userDetailsString) : null;
 
@@ -136,8 +144,11 @@ const MyAccount = () => {
 
           return (
             <div key={index}>
-              <div className="course-image-container" onClick={() => handleViewProgress(course)}>
-                <Image
+              <div
+                className={`course-image-container ${!isCurrentCourseClickable ? 'disabled' : ''}`}
+                onClick={isCurrentCourseClickable ? () => handleViewProgress(course) : undefined}
+              >              
+              <Image
                   src={courseImages[course]}
                   alt={course}
                   layout="fill"
@@ -148,7 +159,6 @@ const MyAccount = () => {
                   <div className="status-container">
                     <button
                       className={`status-button ${courseStatus?.status.replace(' ', '-') || 'Not-Started'}`}
-                      onClick={() => handleViewProgress(course)}
                       disabled={!isCurrentCourseClickable}
                     >
                       {courseStatus?.status || 'Not Started'}
@@ -163,6 +173,21 @@ const MyAccount = () => {
           );
         })}
       </section>
+
+      {/* Modal */}
+      {showModal && (
+        <div className={`modal ${showModal ? 'active' : ''}`}>
+          <div className="modal-content">
+            <div className="modal-header">Access Denied</div>
+            <div className="modal-body">
+            <p>Please Complete previous modules to unlock.</p>
+            </div>
+            <button className="modal-close" onClick={() => setShowModal(false)}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

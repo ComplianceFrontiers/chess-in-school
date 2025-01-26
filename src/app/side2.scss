@@ -1,17 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-.course-content2 {
-  position: absolute; // Position absolutely within the sidebar container
+.course-content1 {
+  // position: absolute; // Position absolutely within the sidebar container
   top: 0; // Align to the top edge of the sidebar container
   left: 0; // Align to the left edge
   width: 250px; // Fixed width for the course content
-  max-height: 100vh; // Max height for overflow management
-  overflow-y: auto; // Enable vertical scroll if content overflows
-  background-color: rgb(23 37 84); // Background color
-  border-radius: 12px; // Rounded corners
-  padding: 10px; // Padding for inner content
-  transition: width 0.3s ease; // Transition for smooth width changes
-  font-family: 'Montserrat', sans-serif; // Font styling
+  max-height: calc(100vh - 20px); 
+    overflow-y: auto; // Enable vertical scroll if content overflows
+  background-color: rgb(23, 37, 84); // Background color 
+  padding: 5px; // Padding for inner content  
   z-index: 10; // Higher z-index to overlay on content
 
 
@@ -30,26 +27,21 @@
     border-radius: 12px;
   }
 
-  &::-webkit-scrollbar-thumb {
-    // background-color: #888888;
+  &::-webkit-scrollbar-thumb { 
     border-radius: 12px;
-
-    &:hover {
-      // background-color: #555555;
-    }
+ 
   }
 
-  .header2 {
+  .header1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
 
-    .toggle-button2 {
-      color: #000000;
-      border: none;
-      border-radius: 50%;
-      width: 30px;
+    .toggle-button1 {
+      color: #0056B3;
+      border: none; 
+      width: 20px;
       height: 30px;
       padding: 0;
       cursor: pointer;
@@ -58,15 +50,12 @@
       align-items: center;
       justify-content: center;
       transition: background-color 0.3s ease, transform 0.3s ease;
-
-      &:hover {
-        transform: scale(1.1);
-      }
+ 
     }
 
-    .go-back-button2 {
+    .go-back-button1 {
       background-color: #0056b3;
-      color: #ffffff;
+      color: white;
       border: none;
       border-radius: 8px;
       padding: 5px 10px;
@@ -80,8 +69,9 @@
     }
   }
 
-  .module2 {
-    .module-header2 {
+  .module1 {
+    color: white;
+    .module-header1 {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -90,14 +80,14 @@
       margin-bottom: 12px;
 
       span {
-        font-size: 18px;
+        font-size: 10px;
         color: #333333;
 
         &.progress {
           font-weight: 700;
 
           .topics-count {
-            color: #666666;
+            color: white;
           }
 
           .quizzes-count {
@@ -106,71 +96,19 @@
         }
       }
     }
-
-    .topics2 {
-      .topic2 {
-        display: flex;
-        flex-direction: column;
-        padding: 12px 0;
-        border-bottom: 1px solid #e6e6e6;
-        font-size: 18px;
-        cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-        border-radius: 8px;
-
-        &:hover {
-          background-color: #f0f0f0;
-          transform: translateX(8px);
-        }
-
-        .title-container {
-          display: flex;
-          align-items: center;
-
-          .icon {
-            width: 24px;
-            height: 24px;
-            margin-right: 12px;
-            background-color: transparent;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-          }
-
-          .titles {
-            color: #0056b3;
-            margin-left: 0;
-            flex: 1;
-          }
-        }
-
-        &.completed .icon.check {
-          background-color: #28a745;
-        }
-
-        .submodules2 {
-          margin-top: 8px;
-          padding-left: 20px;
-
-          
-        }
-      }
-    }
+ 
   }
-  .submodule2 {
+  .submodule1 {
     display: flex;
     align-items: center;
     padding: 8px 0;
-    border-bottom: 1px solid #e6e6e6;
-    font-size: 16px;
+    font-size: 13px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
     border-radius: 8px;
 
     &:hover {
-      background-color: #f0f0f0;
-      transform: translateX(8px);
+      background-color: #28a745; 
     }
     &.highlighted {
       background-color: rgb(243, 146, 10); /* Or any color you want */
@@ -195,12 +133,10 @@
       color: #0056b3;
     }
 
-    &.completed .icon.check {
-      background-color: #28a745;
-    }
+    
   }
 
-  .alert-popup2 {
+  .alert-popup1 {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -208,6 +144,7 @@
     width: 90%;
     max-width: 450px;
     background-color: #f9f9f9;
+    color :black;
     border-radius: 15px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     padding: 25px;
@@ -218,30 +155,29 @@
     justify-content: center;
     text-align: center;
   
-    .alert-content2 {
+    .alert-content1 {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       width: 100%;
+      color :black;
   
       h2 {
-        font-size: 22px;
-        color: #333;
+        font-size: 13px; 
         margin-bottom: 15px;
         font-weight: 600;
       }
   
       p {
-        font-size: 16px;
-        color: #555;
+        font-size: 13px; 
         margin-bottom: 25px;
         line-height: 1.5;
       }
   
-      .close-button2 {
-        background-color: #4caf50;
-        color: #ffffff;
+      .close-button1 {
+        color:white;
+        background-color: #4caf50; 
         border: none;
         border-radius: 8px;
         padding: 12px 24px;
@@ -249,10 +185,11 @@
         font-size: 16px;
         font-weight: 500;
         transition: background-color 0.3s ease, transform 0.2s ease;
-        margin-top: 130px; // Ensures space between text and button
+        // margin-top: 130px; // Ensures space between text and button
   
         &:hover {
           background-color: #45a049;
+          color:white;
           // transform: scale(1.05);
         }
       }
@@ -260,17 +197,20 @@
   }
 }
 .sidebar {
-  width: 250px;
+  width: 200px;
   transition: width 0.3s ease;
 
   &.minimized {
     width: 60px;
+    // Additional styling for minimized sidebar
   }
 
   &.expanded {
     width: 250px;
+    // Additional styling for expanded sidebar
   }
 }
+
  
 @media (max-width: 768px) {
   .sidebar {
@@ -288,3 +228,4 @@
     }
   }
 }
+ 

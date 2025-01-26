@@ -1,13 +1,19 @@
+body {
+  height: 100vh;
+  // overflow: hidden;
+}
+
 .account-page {
   font-family: Arial, sans-serif;
   background-color: whitesmoke;
   background-size: cover;
-  background-position: center;
+  background-position: center; 
   width: 100%;
   height: 100vh; // increased height
   padding: 10px;
   box-sizing: border-box;
   margin: 0;
+  overflow-y: auto; 
 }
 
 h1 {
@@ -20,8 +26,8 @@ h1 {
   border-radius: 5px;
   text-align: center;
   padding: 10px;
-  font-size: 30px;
   margin-bottom: 35px;
+  font-size: 30px;
   font-weight: bold;
   background: linear-gradient(180deg, #FF0075, #8C52FF);
   color: white;
@@ -52,7 +58,15 @@ h1 {
   position: relative;
   width: 95%;
   height: 150px;
+  cursor: pointer; // Add pointer cursor when clickable
+
+  &.disabled {
+    // pointer-events: none; // Disables click
+    // opacity: 0.1; // Makes the container look disabled
+    cursor: not-allowed; // Shows a "not-allowed" cursor
+  }
 }
+
 
 .course-image {
   object-fit: cover;
@@ -80,11 +94,11 @@ h1 {
 }
 
 .status-button, .completion-button {
-  font-size: 13px;
+  font-size: 13px; 
   padding: 10px 15px;
   border: 1px solid rgb(68, 68, 68);
   border-radius: 25px;
-  cursor: pointer;
+  cursor: pointer; 
   margin-top: 50px;
   font-size: 15px;
   position: relative;
@@ -92,7 +106,7 @@ h1 {
 
 .status-button {
   &.Not-Started {
-    background-color: rgb(224, 64, 43);
+    background-color: rgb(243, 146, 10);
   }
 
   &.In-Progress {
@@ -106,7 +120,6 @@ h1 {
   }
 
   &:disabled {
-    // opacity: 0.5;
     cursor: not-allowed;
   }
 }
@@ -119,56 +132,239 @@ h1 {
     opacity: 0.9;
   }
 }
+/* Pop-up Modal Styles */
+.modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.modal-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.modal-body {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.modal-close {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ff3333;
+  }
+}
 
 /* Tablet View */
 @media (max-width: 1024px) {
-  .courses-section {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns for tablet */
+
+ .account-page {
+    max-height: 100vh;
+    overflow-y: auto; 
+  font-family: Arial, sans-serif;
+  background-color: whitesmoke;
+  background-size: cover;
+  background-position: center; 
+    width: 100%;
+    height: 100%; 
+  box-sizing: border-box;
+  margin: 0;
+  overflow-y: auto; 
+}
+
+h1 {
+  font-size: 30px;
+  color: #f9f6f6;
+  font-weight: bold;
+}
+
+.account-header {
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 0px;
+  font-weight: bold;
+  background: linear-gradient(180deg, #FF0075, #8C52FF);
+  color: white;
+}
+
+.courses-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0;
+  padding: 0;
+}
+
+.course-card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  padding: 0;
+  margin: 0;
+
+  &:hover {
+    transform: translateY(-10px);
   }
+}
+
+.course-image-container {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  cursor: pointer; // Add pointer cursor when clickable
+
+  &.disabled {
+    cursor: not-allowed; // Shows a "not-allowed" cursor
+  }
+}
+
+
+.course-image {
+  object-fit: cover;
+}
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.status-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
 
   h1 {
     font-size: 25px;
   }
 
-  .course-image-container {
-    height: 130px; /* Adjust image size */
-  }
+   
 
   .status-button, .completion-button {
-    font-size: 12px;
+    font-size: 8px;
     padding: 8px 16px; /* Adjust padding */
   }
 }
 
 /* Mobile View */
 @media (max-width: 768px) {
-
   .account-page {
     font-family: Arial, sans-serif;
     background-color: whitesmoke;
     background-size: cover;
     background-position: center;
-    width: 100%;
-    height: 100%; // increased height
-    padding: 10px;
+    padding: 5px;
     box-sizing: border-box;
     margin: 0;
-  }
-  .courses-section {
-    grid-template-columns: 1fr; /* 1 column for mobile */
-    grid-row-gap: 20px; /* Increase row gap */
+    overflow-y: auto;
   }
 
-  h1 {
-    font-size: 20px;
+  .account-header {
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 0px;
+    font-size: 30px;
+    font-weight: bold;
+    background: linear-gradient(180deg, #FF0075, #8C52FF);
+    color: white;
+    margin-bottom: 20px;
+  }
+
+  .courses-section {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .course-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    padding: 0;
+    margin: 0;
+
+    &:hover {
+      transform: translateY(-10px);
+    }
   }
 
   .course-image-container {
-    height: 120px; /* Further adjust image size */
+    position: relative;
+    width: 95%;
+    height: 80px;
+    cursor: pointer; // Add pointer cursor when clickable
+    margin-bottom: 10px; /* Add spacing between images */
+  
+    &.disabled {
+      cursor: not-allowed; // Shows a "not-allowed" cursor
+    }
   }
 
-  .status-button, .completion-button {
-    font-size: 11px;
+  .course-image {
+    object-fit: cover;
+  }
+
+  .image-overlay {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .status-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+
+  h1 {
+    font-size: 14px;
+  }
+
+  .status-button,
+  .completion-button {
+    font-size: 8px;
     padding: 6px 12px; /* Adjust padding for smaller screens */
   }
 }

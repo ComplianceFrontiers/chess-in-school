@@ -88,7 +88,7 @@ export default function RootLayout({
                     pathname === "/modules/level1/chessGame/101") && (
                       <Sidebar1/>
                   )}
-                  {/* level2 knight */}
+                 
                   {(pathname === "/modules/level2/chessOpening/11" ||
                     pathname === "/modules/level2/chessOpening/12" ||
                     pathname === "/modules/level2/chessOpening/13" ||
