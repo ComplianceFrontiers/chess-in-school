@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-.course-content1 {
+.course-content2 {
   // position: absolute; // Position absolutely within the sidebar container
   top: 0; // Align to the top edge of the sidebar container
   left: 0; // Align to the left edge
@@ -32,13 +32,13 @@
  
   }
 
-  .header1 {
+  .header2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
 
-    .toggle-button1 {
+    .toggle-button2 {
       color: #0056B3;
       border: none; 
       width: 20px;
@@ -53,7 +53,7 @@
  
     }
 
-    .go-back-button1 {
+    .go-back-button2 {
       background-color: #0056b3;
       color: white;
       border: none;
@@ -69,9 +69,9 @@
     }
   }
 
-  .module1 {
+  .module2 {
     color: white;
-    .module-header1 {
+    .module-header2 {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -98,7 +98,7 @@
     }
  
   }
-  .submodule1 {
+  .submodule2 {
     display: flex;
     align-items: center;
     padding: 8px 0;
@@ -136,7 +136,7 @@
     
   }
 
-  .alert-popup1 {
+  .alert-popup2 {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -155,7 +155,7 @@
     justify-content: center;
     text-align: center;
   
-    .alert-content1 {
+    .alert-content2 {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -175,7 +175,7 @@
         line-height: 1.5;
       }
   
-      .close-button1 {
+      .close-button2 {
         color:white;
         background-color: #4caf50; 
         border: none;
