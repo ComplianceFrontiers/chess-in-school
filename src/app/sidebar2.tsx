@@ -93,12 +93,31 @@ const topics = [
       ]
     }
   ];
+
 const Sidebar2: React.FC = () => {
   const router = useRouter();
   const [isSidebarMinimized, setIsSidebarMinimized] = useState(false);
   const [userCourses, setUserCourses] = useState<string[]>([]);
   const [showAlert, setShowAlert] = useState(false); // Add state for alert
   const currentPath = usePathname(); 
+
+  const handleResize = () => {
+    if (window.innerWidth <= 768) {
+      setIsSidebarMinimized(true); // Minimize sidebar on small screens
+    } else {
+      setIsSidebarMinimized(false); // Maximize sidebar on larger screens
+    }
+  };
+  
+  useEffect(() => {
+    handleResize(); // Call it initially to set the correct sidebar state
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     const fetchUserCourses = async () => {
       const userDetailsString = localStorage.getItem('userDetails');
@@ -108,6 +127,7 @@ const Sidebar2: React.FC = () => {
         try {
           const response = await axios.get(`https://backend-chess-tau.vercel.app/getinschooldetails?email=${email}`);
           const data = response.data;
+          
           if (data && data["data"] && Array.isArray(data["data"]["registered_inschool_courses"])) {
             const courseTitles = data["data"]["registered_inschool_courses"]
               .map((course: { course_title: string }) => course.course_title.trim().toLowerCase());
@@ -184,6 +204,8 @@ const Sidebar2: React.FC = () => {
       };
     const path = submodulePaths[title];
     if (path && isAccessible(title)) {
+      setIsSidebarMinimized(true);
+    localStorage.setItem("sidebarMinimized", "true"); // Store state in localStorage
       router.push(path);
     } else {
       setShowAlert(true);
@@ -210,7 +232,7 @@ const Sidebar2: React.FC = () => {
     } else if (title.startsWith("9.")) {
       return userCourses.includes("chessStudyplan");
     }
-    return false;
+    else {return false}
   };
   const isActive = (submoduleTitle: string) => {
     const submodulePaths: Record<string, string> = {
@@ -324,5 +346,4 @@ const Sidebar2: React.FC = () => {
     </div>
   );
 };
-
 export default Sidebar2;
