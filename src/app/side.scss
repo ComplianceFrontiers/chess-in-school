@@ -24,6 +24,9 @@
     margin-bottom: 10px;
 
     .avatar {
+     margin-left:10px;
+     margin-top:10px;
+      width:90%;
       border-radius: 50%;
       border: 5px solid #ddd;
       cursor: pointer;
@@ -193,6 +196,7 @@
     margin-bottom: 10px;
 
     .avatar {
+      margin-left: 0px;
       margin-top: 10px;
       align-items: center;
       width: 100px; // Adjust the width for a smaller size
