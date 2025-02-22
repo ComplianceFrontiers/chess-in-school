@@ -1,19 +1,18 @@
 body {
   height: 100vh;
-  // overflow: hidden;
+  margin: 0;
 }
 
 .account-page {
   font-family: Arial, sans-serif;
-  background-color: whitesmoke;
+  background-color: #1e1e2e;
   background-size: cover;
-  background-position: center; 
+  background-position: center;
   width: 100%;
-  height: 100vh; // increased height
+  height: 100vh;
   padding: 10px;
   box-sizing: border-box;
-  margin: 0;
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 
 h1 {
@@ -29,14 +28,14 @@ h1 {
   margin-bottom: 35px;
   font-size: 30px;
   font-weight: bold;
-  background: rgb(23 37 84);;
+  background: rgb(23, 37, 84);
   color: white;
 }
 
 .courses-section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-column-gap: 15px; 
+  gap: 15px;
   margin: 0;
   padding: 0;
 }
@@ -58,15 +57,12 @@ h1 {
   position: relative;
   width: 95%;
   height: 150px;
-  cursor: pointer; // Add pointer cursor when clickable
+  cursor: pointer;
 
   &.disabled {
-    // pointer-events: none; // Disables click
-    // opacity: 0.1; // Makes the container look disabled
-    cursor: not-allowed; // Shows a "not-allowed" cursor
+    cursor: not-allowed;
   }
 }
-
 
 .course-image {
   object-fit: cover;
@@ -75,9 +71,9 @@ h1 {
 .image-overlay {
   position: absolute;
   bottom: 0;
-  left: 20px;
+  left:0;
   width: 100%;
-  height: 70%;
+  height: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,34 +90,11 @@ h1 {
 }
 
 .status-button, .completion-button {
-  font-size: 13px; 
-  padding: 10px 15px;
-  border: 1px solid rgb(68, 68, 68);
-  border-radius: 25px;
-  cursor: pointer; 
-  margin-top: 50px;
   font-size: 15px;
-  position: relative;
-}
-
-.status-button {
-  &.Not-Started {
-    background-color: rgb(243, 146, 10);
-  }
-
-  &.In-Progress {
-    background-color: rgb(249, 233, 9);
-    color: black;
-  }
-
-  &.Completed {
-    color: white;
-    background-color: rgb(40, 145, 40);
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-  }
+  padding: 5px 15px;
+  border: 1px solid #444;
+  border-radius: 25px;
+  cursor: pointer;
 }
 
 .completion-button {
@@ -132,239 +105,98 @@ h1 {
     opacity: 0.9;
   }
 }
-/* Pop-up Modal Styles */
-.modal {
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: center;
-}.modal-content {
-  background-color: #fff;
-  margin: auto;
-  padding: 20px;
-  border-radius: 8px;
-  width: 80%;
-  max-width: 400px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.modal-header {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.modal-body {
-  font-size: 16px;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.modal-close {
-  background-color: #ff4d4d;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #ff3333;
-  }
-}
 
 /* Tablet View */
 @media (max-width: 1024px) {
-
- .account-page {
-    max-height: 100vh;
-    overflow-y: auto; 
-  font-family: Arial, sans-serif;
-  background-color: whitesmoke;
-  background-size: cover;
-  background-position: center; 
-    width: 100%;
-    height: 100%; 
-  box-sizing: border-box;
-  margin: 0;
-  overflow-y: auto; 
-}
-
-h1 {
-  font-size: 30px;
-  color: #f9f6f6;
-  font-weight: bold;
-}
-
-.account-header {
-  border-radius: 5px;
-  text-align: center;
-  padding: 10px;
-  margin-bottom: 0px;
-  font-weight: bold;
-  background: rgb(23 37 84);;
-  color: white;
-}
-
-.courses-section {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  margin: 0;
-  padding: 0;
-}
-
-.course-card {
-  position: relative;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  padding: 0;
-  margin: 0;
-
-  &:hover {
-    transform: translateY(-10px);
-  }
-}
-
-.course-image-container {
-  position: relative;
-  width: 100%;
-  height: 100px;
-  cursor: pointer; // Add pointer cursor when clickable
-
-  &.disabled {
-    cursor: not-allowed; // Shows a "not-allowed" cursor
-  }
-}
-
-
-.course-image {
-  object-fit: cover;
-}
-.image-overlay {
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.status-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-}
-
-
-  h1 {
-    font-size: 25px;
+  .courses-section {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-   
+  .course-image-container {
+    height: 100px;
+  }
 
   .status-button, .completion-button {
     font-size: 8px;
-    padding: 8px 16px; /* Adjust padding */
+    padding: 8px 16px;
   }
 }
 
 /* Mobile View */
 @media (max-width: 768px) {
   .account-page {
-    font-family: Arial, sans-serif;
-    background-color: whitesmoke;
-    background-size: cover;
-    background-position: center;
     padding: 5px;
-    box-sizing: border-box;
-    margin: 0;
-    overflow-y: auto;
   }
 
   .account-header {
-    border-radius: 5px;
-    text-align: center;
-    padding: 10px;
-    margin-bottom: 0px;
-    font-size: 30px;
-    font-weight: bold;
-    background: rgb(23 37 84);;
-    color: white;
     margin-bottom: 20px;
   }
 
   .courses-section {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 15px;
-    margin: 0;
-    padding: 0;
-  }
-
-  .course-card {
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-    padding: 0;
-    margin: 0;
-
-    &:hover {
-      transform: translateY(-10px);
-    }
+    grid-template-columns: 1fr;
   }
 
   .course-image-container {
-    position: relative;
-    width: 95%;
     height: 80px;
-    cursor: pointer; // Add pointer cursor when clickable
-    margin-bottom: 10px; /* Add spacing between images */
-  
-    &.disabled {
-      cursor: not-allowed; // Shows a "not-allowed" cursor
-    }
-  }
-
-  .course-image {
-    object-fit: cover;
-  }
-
-  .image-overlay {
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .status-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
+    margin-bottom: 10px;
   }
 
   h1 {
     font-size: 14px;
   }
 
-  .status-button,
-  .completion-button {
+  .status-button, .completion-button {
     font-size: 8px;
-    padding: 6px 12px; /* Adjust padding for smaller screens */
+    padding: 5px 6px;
   }
+
+  .image-overlay { 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: auto;
+    flex-wrap: wrap;
+  }
+
+  .status-container {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+/* Common Styles for All Views */
+.course-image-container {
+  background: linear-gradient(135deg, #34a0ff, #6fe3ff);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  padding: 10px;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.course-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.image-overlay {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  // border-bottom-left-radius: 15px;
+  // border-bottom-right-radius: 15px;
+}
+
+.completion-button {
+  background: #ffd700;
+  border: none;
+  color: #222;
+  border-radius: 5px;
 }

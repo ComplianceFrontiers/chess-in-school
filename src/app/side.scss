@@ -24,7 +24,7 @@
     margin-bottom: 10px;
 
     .avatar {
-     margin-left:10px;
+     margin-left:20px;
      margin-top:10px;
       width:90%;
       border-radius: 50%;
@@ -35,7 +35,7 @@
 
     .role {
       font-family: 'Montserrat', sans-serif;
-      font-size: 2rem;
+      font-size: 1rem;
       font-weight: bold;
       color: #eeeff1;
       padding: 10px 20px;
@@ -196,7 +196,7 @@
     margin-bottom: 10px;
 
     .avatar {
-      margin-left: 0px;
+      margin-left: 20px;
       margin-top: 10px;
       align-items: center;
       width: 100px; // Adjust the width for a smaller size
@@ -206,8 +206,8 @@
       object-fit: cover;
     }
     .role {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.4rem;
+      // font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
       font-weight: bold;
       color: #eeeff1;
       padding: 10px 20px;
